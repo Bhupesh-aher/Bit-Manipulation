@@ -69,21 +69,21 @@ int divide(int dividend, int divisor) {
         // Count how many times divisor can
         // be doubled before exceeding dividend
         int cnt = 0;
-        while(n >= (d << (cnt+1))){
+        while(n >= (d << (cnt+1))){         // d * 2 ^ cnt+1
             cnt += 1;
         }
         // Add the value corresponding
         // to the current doubling to the quotient
-        quotient += 1 << cnt;
+        quotient += 1 << cnt;             // cnt = 2 ^ cnt
         // Subtract the product of divisor
         // and the doubled value from dividend
-        n -= (d << cnt);
+        n -= (d << cnt);                 // d * 2 ^ cnt
     }
 
     // Handle overflow cases
     // If quotient equals (2^31) and the result
     // is supposed to be positive, return INT_MAX
-    if(quotient == (1<<31)&&sign){
+    if(quotient == (1<<31)&&sign){                // 1 << 31 = 1 * 2 ^ 31 
         return INT_MAX;
     }
     // If quotient equals (2^31) and the result
